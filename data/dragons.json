@@ -1,0 +1,49 @@
+{
+    "dragons": [
+        {
+            "id": "dragon1",
+            "name": "Mushu",
+            "attack": 50,
+            "defense": 60,
+            "hp": 100,
+            "speed": 90,
+            "type": "Type"
+        },
+        {
+            "id": "dragon2",
+            "name": "Smaug",
+            "attack": 40,
+            "defense": 80,
+            "hp": 100,
+            "speed": 50,
+            "type": "Type"
+        },
+        {
+            "id": "dragon3",
+            "name": "Toothless",
+            "attack": 70,
+            "defense": 40,
+            "hp": 100,
+            "speed": 100,
+            "type": "Type"
+        },
+        {
+            "id": "dragon4",
+            "name": "Falkor",
+            "attack": 55,
+            "defense": 65,
+            "hp": 100,
+            "speed": 70,
+            "type": "Type"
+        },
+        {
+            "id": "dragon5",
+            "name": "Ehecati",
+            "attack": 60,
+            "defense": 60,
+            "hp": 100,
+            "speed": 90,
+            "type": "Type"
+        }
+    ]
+}

@@ -7,7 +7,7 @@ const getAll = async (): Promise<Dragon[]> =>
 
 const getBattleResult = async (playerDragon: Dragon | null, computerDragon: Dragon | null): Promise<BattleResult | null> =>
   await fetch(
-    `${API_URL}/fight`,
+    `${API_URL}/dragons/fight`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

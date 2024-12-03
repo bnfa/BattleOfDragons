@@ -2,9 +2,29 @@ import { act, render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { store } from '../../app/store'
 import { DragonsList } from './DragonsList'
-import dragonsData from '../../../data/dragons.json'
 
-const dragonsListFactory = (data = dragonsData.dragons) => {
+const dragonsMockData = [
+    {
+        id: "dragon1",
+        name: "Mushu",
+        attack: 50,
+        defense: 60,
+        hp: 100,
+        speed: 90,
+        type: "Type"
+    },
+    {
+        id: "dragon2",
+        name: "Smaug",
+        attack: 40,
+        defense: 80,
+        hp: 100,
+        speed: 50,
+        type: "Type"
+    },
+];
+
+const dragonsListFactory = (data = dragonsMockData) => {
     render(
         <Provider store={store}>
             <DragonsList dragons={data} />
@@ -16,7 +36,7 @@ describe('DragonList', () => {
     it('should render DragonList', () => {
         dragonsListFactory();
         const dragonItemsCount = screen.getByTestId('dragons-list-section').childNodes.length
-        expect(dragonItemsCount).toBe(dragonsData.dragons.length)
+        expect(dragonItemsCount).toBe(dragonsMockData.length)
     })
 
     it('should render the no dragons available', () => {

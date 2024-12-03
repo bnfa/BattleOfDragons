@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { Dragon, BattleResult } from '../models/interfaces/dragon.interface';
+import { Dragon, BattleResult } from '../../../server/models/Dragon.interface';
 import { fetchDragonsData, fetchBattleResult, setSelectedDragon, setSelectedComputerDragon } from './dragons.actions';
 
 interface DragonState {
@@ -44,17 +44,24 @@ export const dragonsReducer = createReducer(initialState, (builder) => {
 
   builder.addCase(fetchBattleResult.fulfilled, (state, action) => {
 
-    if (!!action.payload?.winner) {
+    if (action.payload?.winner) {
+
       return {
         ...state,
-        battleResult: action.payload,
+        battleResult: {
+          winner: action.payload.winner,
+          tie: action.payload.tie,
+          computerDragon: action.payload.computerDragon,
+          playerDragon: action.payload.playerDragon
+
+        }
       }
     } else {
       return {
         ...state,
-        battleResult: action.payload,
+        battleResult: null,
         selectedDragon: action.payload!.playerDragon,
-        selectedComputerDragon: action.payload!.computerDragon,
+        selectedComputerDragon: action.payload!.computerDragon
       }
     }
   })

@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { useAppDispatch } from "../../app/hooks"
-import { Dragon } from "../../models/interfaces/dragon.interface"
-import { setSelectedDragon, setSelectedComputerDragon } from "../../reducers/dragons.actions"
-import { DragonNameTag, DragonName, DragonSection, ListTitle } from "./DragonsList.styled"
+import { useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { Dragon } from "../../../../server/models/Dragon.interface";
+import { setSelectedDragon, setSelectedComputerDragon } from "../../reducers/dragons.actions";
+import { DragonNameTag, DragonName, DragonSection, ListTitle } from "./DragonsList.styled";
 
 type DragonsListProps = {
     dragons: Dragon[]

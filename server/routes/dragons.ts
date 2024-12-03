@@ -1,5 +1,5 @@
 import { Router, Request } from "express";
-import { Dragon, FightReqBody, FightResBody } from "../models/Dragon.interface";
+import { Dragon, FightReqBody, FightResBody } from "../../server/models/Dragon.interface";
 import { TypedRequestBody, TypedResponse } from "../models/Types";
 
 const router = Router();

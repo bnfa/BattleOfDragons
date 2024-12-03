@@ -1,7 +1,7 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { BattleResult, Dragon } from '../models/interfaces/dragon.interface';
-import { DragonService } from './dragons.service';
-import { RootState } from '../app/store';
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { BattleResult, Dragon, FightReqBody, FightResBody } from "../../../server/models/Dragon.interface";
+import { DragonService } from "./dragons.service";
+import { RootState } from "../app/store";
 
 export const fetchDragonsData = createAsyncThunk<Dragon[]>(
   'dragons/fetchDragonsData',
@@ -10,7 +10,7 @@ export const fetchDragonsData = createAsyncThunk<Dragon[]>(
 
 export const fetchBattleResult = createAsyncThunk(
   'dragons/fetchBattleResult',
-  async ({ playerDragon, computerDragon }: { playerDragon: Dragon | null, computerDragon: Dragon | null }): Promise<BattleResult | null> => {
+  async ({ playerDragon, computerDragon }: FightReqBody): Promise<FightResBody | null> => {
     const response = await DragonService.getBattleResult(playerDragon, computerDragon);
 
     return response;

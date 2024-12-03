@@ -1,4 +1,4 @@
-import { Dragon } from "../../models/interfaces/dragon.interface"
+import { Dragon } from "../../../../server/models/Dragon.interface";
 import { DragonCardContainer, DragonCardTitle, ProgressBar, DragonProps, Line } from "./DragonCard.styled"
 
 type DragonCardProps = {

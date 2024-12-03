@@ -23,7 +23,7 @@ export interface FightReqBody {
 export interface FightResBody {
   tie: boolean;
   winner: Dragon | null;
-  playerDragon?: Dragon;
-  computerDragon?: Dragon;
-  message: string;
+  playerDragon: Dragon;
+  computerDragon: Dragon;
+  message?: string;
 }

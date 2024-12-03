@@ -35,7 +35,7 @@ const BattleOfDragons = () => {
         }}>
             <Title>Battle of Dragons</Title>
             <DragonsList dragons={dragons} />
-            {result && selectedDragon &&
+            {result?.winner && selectedDragon &&
                 <BattleResult>
                     {result?.winner.name} wins!
                 </BattleResult>

@@ -10,11 +10,10 @@ export const fetchDragonsData = createAsyncThunk<Dragon[]>(
 
 export const fetchBattleResult = createAsyncThunk(
   'dragons/fetchBattleResult',
-  async({playerDragon, computerDragon}: {playerDragon:Dragon | null, computerDragon: Dragon | null}): Promise<BattleResult | null> => {
+  async ({ playerDragon, computerDragon }: { playerDragon: Dragon | null, computerDragon: Dragon | null }): Promise<BattleResult | null> => {
     const response = await DragonService.getBattleResult(playerDragon, computerDragon);
 
     return response;
-
   }
 );
 

@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve:data": "node data/server.js"
+    "serve:data": "nodemon data/server.js"
   },
   "eslintConfig": {
     "extends": [

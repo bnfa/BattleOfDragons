@@ -11,4 +11,6 @@ export interface Dragon {
 export interface BattleResult {
   tie: boolean;
   winner: Dragon;
+  playerDragon: Dragon;
+  computerDragon: Dragon;
 };

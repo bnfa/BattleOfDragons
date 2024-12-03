@@ -42,38 +42,22 @@ export const dragonsReducer = createReducer(initialState, (builder) => {
     battleResult: null,
   }));
 
- 
-  // #Note: ran out of time to finish the battle part
-  // builder.addCase(fetchBattleResult.fulfilled, (state, action) => {
+  builder.addCase(fetchBattleResult.fulfilled, (state, action) => {
 
-  //   console.log(action.payload?.finished)
-
-  //   switch (action.payload?.finished) {
-  //     case false:
-  //       return {
-  //         ...state,
-  //         battleResult: action.payload,
-  //       }
-  //     case true:
-  //       return {
-  //         ...state,
-  //         selectedDragon: action.payload?.playerDragon,
-  //         selectedComputerDragon: action.payload?.computerDragon,
-  //         battleResult: null
-  //       }
-  //     default: 
-  //       return {
-  //         ...state,
-  //       }
-  //   }
-  // })
-
-  // *note: simpler version 
-  builder.addCase(fetchBattleResult.fulfilled, (state, action) => ({
-      ...state,
-      battleResult: action.payload,
+    if (!!action.payload?.winner) {
+      return {
+        ...state,
+        battleResult: action.payload,
+      }
+    } else {
+      return {
+        ...state,
+        battleResult: action.payload,
+        selectedDragon: action.payload!.playerDragon,
+        selectedComputerDragon: action.payload!.computerDragon,
+      }
     }
-  ));
+  })
 
   builder.addCase(setSelectedDragon, (state, action) => ({
     ...state,

@@ -1,5 +1,6 @@
-import { Router, Request, Response } from "express";
-import { Dragon } from "../models/Dragon.interface";
+import { Router, Request } from "express";
+import { Dragon, FightReqBody, FightResBody } from "../models/Dragon.interface";
+import { TypedRequestBody, TypedResponse } from "../models/Types";
 
 const router = Router();
 
@@ -51,19 +52,18 @@ const dragons: Dragon[] = [
     }
 ];
 
-router.get('/', (req: Request, res: Response<Array<Dragon>>) => {
+router.get('/', (req: Request, res: TypedResponse<Array<Dragon>>) => {
     res.json(dragons);
 });
 
+router.post('/fight', (req: TypedRequestBody<FightReqBody>, res: TypedResponse<FightResBody>): any => {
 
-router.post('/fight', (req: Request, res: Response):any => {
     const { playerDragon, computerDragon } = req.body;
 
     if (!playerDragon.id || !computerDragon.id) {
         return res.status(400).jsonp({ message: 'Missing ID' });
     }
 
-    // they way the assignment is setup is not fair for "game" perhaps this is a better way (Not sure, and the dragons are not balanced)
     const playerStranght = (playerDragon.attack + playerDragon.speed + playerDragon.defense) + playerDragon.hp;
     const computerStranght = (computerDragon.attack + computerDragon.speed + computerDragon.defense) + computerDragon.hp;
 
@@ -77,18 +77,18 @@ router.post('/fight', (req: Request, res: Response):any => {
     }
 
     if (playerDragon.hp <= 0) {
-        return res.json({ winner: computerDragon, tie: false });
+        return res.json({ winner: computerDragon, tie: false, message: 'Computer won' });
     }
 
     if (computerDragon.hp <= 0) {
-        return res.json({ winner: playerDragon, tie: false });
+        return res.json({ winner: playerDragon, tie: false, message: 'Player won' });
     }
 
     if (playerDragon.hp === 0 || computerDragon.hp === 0) {
-        return res.json({ winner: null, tie: true });
+        return res.json({ winner: null, tie: true, message: 'It is a tie' });
     }
 
-    res.json({ playerDragon, computerDragon, winner: null })
+    res.json({ playerDragon, computerDragon, winner: null, message: 'cames continues', tie: false })
 
 });
 
